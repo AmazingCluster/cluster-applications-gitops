@@ -1,0 +1,6 @@
+project:
+  name: amazing-cluster
+
+spec:
+  destination:
+    server: https://kubernetes.default.svc
