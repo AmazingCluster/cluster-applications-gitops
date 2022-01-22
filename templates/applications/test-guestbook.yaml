@@ -2,12 +2,12 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: guestbook
-  namespace: argocd
+  namespace: test-apps
   finalizers:
   - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
-    namespace: argocd
+    namespace: test-apps
     server: {{ .Values.spec.destination.server }}
   project: default
   source:
@@ -16,6 +16,8 @@ spec:
     targetRevision: HEAD
 
 syncPolicy:
-    automated: 
-      prune: true
-      selfHeal: true
+  automated: 
+    prune: true
+    selfHeal: true
+  syncOptions:
+      - CreateNamespace=true  
