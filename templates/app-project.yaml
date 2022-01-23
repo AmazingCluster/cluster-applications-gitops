@@ -23,3 +23,8 @@ spec:
   clusterResourceWhitelist:
   - group: '*'
     kind: '*'
+    
+  syncPolicy:
+    automated: 
+      prune: true
+      selfHeal: true
