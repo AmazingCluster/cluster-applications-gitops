@@ -1,22 +1,22 @@
-# apiVersion: argoproj.io/v1alpha1
-# kind: Application
-# metadata:
-#   name: pi-hole
-#   namespace: argocd
-#   finalizers:
-#   - resources-finalizer.argocd.argoproj.io
-# spec:
-#   destination:
-#     namespace: network
-#     server: {{ .Values.spec.destination.server }}
-#   project: default
-#   source:
-#     path: .
-#     repoURL: https://github.com/AmazingCluster/pi-hole-gitops
-#     targetRevision: HEAD
-#   syncPolicy:
-#     automated: 
-#       prune: true
-#       selfHeal: true
-#     syncOptions:
-#         - CreateNamespace=true  
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: pi-hole
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    namespace: network
+    server: {{ .Values.spec.destination.server }}
+  project: default
+  source:
+    path: .
+    repoURL: https://github.com/AmazingCluster/pi-hole-gitops
+    targetRevision: HEAD
+  syncPolicy:
+    automated: 
+      prune: true
+      selfHeal: true
+    syncOptions:
+        - CreateNamespace=true  
