@@ -1,0 +1,22 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: nginx-ingress-controller
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    namespace: cluster
+    server: {{ .Values.spec.destination.server }}
+  project: default
+  source:
+    path: .
+    repoURL: https://github.com/AmazingCluster/nginx-controller-gitops
+    targetRevision: HEAD
+  syncPolicy:
+    automated: 
+      prune: true
+      selfHeal: true
+    syncOptions:
+        - CreateNamespace=true  
