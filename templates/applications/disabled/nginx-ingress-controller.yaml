@@ -9,7 +9,7 @@
 #   destination:
 #     namespace: cluster
 #     server: {{ .Values.spec.destination.server }}
-#   project: default
+#   project: {{ .Values.project.name }}
 #   source:
 #     path: .
 #     repoURL: https://github.com/AmazingCluster/nginx-controller-gitops
