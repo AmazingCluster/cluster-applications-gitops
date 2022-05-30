@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: pi-hole2
+  name: pi-hole
   namespace: network
   finalizers:
   - resources-finalizer.argocd.argoproj.io
@@ -9,7 +9,7 @@ spec:
   destination:
     namespace: network
     server: {{ .Values.spec.destination.server }}
-  project: {{ .Values.project.name }}
+  project: default
   source:
     path: .
     repoURL: https://github.com/AmazingCluster/pi-hole-gitops
